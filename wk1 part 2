@@ -29,5 +29,49 @@ mtcars %>% select(cyl:vs)%>% head (4)
 
  mtcars %>% mutate(sqrtMPG= sqrt(mpg),logMPG=log(mpg)) %>% select(mpg,sqrtMPG,logMPG,everything() ) %>% head(5)
 
+----------------------------------------------------------------------------------------
+install.packages("readr")
+install.packages("modelr")
+install.packages("randomForest")
+install.packages("ggplot2")
+
+library(readr)
+library(modelr)
+library(randomForest)
+library(ggplot2)
+
+data(diamonds)
+
+ diamonds %>% dim()
+ diamonds %>% names()
+
+ diamtrain<- diamonds%>%sample_frac(0.30)
+ diamtest<- diamonds%>%sample_frac(0.10)
+
+ diamtrain%>% dim()
+diamtest%>% dim()
+
+#Predctive Mode
+#Predictive Model
 
 
+
+#predicting "price" by all other variables
+#use "random Forest"
+
+
+[OR USE THIS FOR A LINEAR MODEL]	
+> pricemodel<- lm(price ~. , data=diamtrain)
+> pricemodel
+
+
+rmse(pricemodel,diamtrain)
+rmse(pricemodel,diamtest)
+mae(pricemodel,diamtrain)
+rmse(pricemodel,diamtest)
+mae(pricemodel,diamtest)
+rsqaure(pricemodel,diamtrain)
+rsquare(pricemodel,diamtrain)
+rsquare(pricemodel,diamtest)
+qae(pricemodel,distribution)
+qae(pricemodel,diamtrain)
